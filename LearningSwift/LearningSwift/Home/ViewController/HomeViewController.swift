@@ -81,19 +81,18 @@ extension HomeViewController {
         let jokeListData = JokeData(method: "GET")
         NetworkManager.shared.sendRequest(jokeListData) { (result) in
             switch result {
-                case .success(let data):
-                print("data: \(data)")
+            case .success(let data):
                 let jokeListResponse = JSONDeserializer<JokeListResponse>.deserializeFrom(json: String(data: data, encoding: .utf8))
                 let dataResponse = jokeListResponse?.data
                 let jokeList = dataResponse?.list
                 guard jokeList != nil else {
-                  return
+                return
                 }
                 for jokeItem in jokeList! {
-                  self.jokeList.append(jokeItem)
+                self.jokeList.append(jokeItem)
                 }
                 self.jokeTableView.reloadData()
-                case .failure(let error):
+            case .failure(let error):
                 print("error: \(error)")
             }
         }
@@ -105,13 +104,9 @@ extension HomeViewController {
         NetworkManager.shared.sendRequest(everydayOneData) { (result) in
             switch result {
             case .success(let data):
-                debugPrint("everyday data resp : \(data)")
                 if let strData = String(data: data, encoding: .utf8) {
-                    debugPrint("everyday str data resp : \(strData)")
                     let everydayOneResponse = JSONDeserializer<EverydayOneWordResponse>.deserializeFrom(json: strData)
                     if everydayOneResponse?.code != 200 {
-                        debugPrint("everydayOneResponse code: \(String(describing: everydayOneResponse?.code))")
-                        debugPrint("everydayOneResponse msg: \(String(describing: everydayOneResponse?.msg))")
                         return
                     }
                     let dataResponse = everydayOneResponse?.data

@@ -16,7 +16,10 @@ protocol NetworkRequestProtocol {
     var headers: [String: String] { get }
     // 请求参数
     var parameters: [String: Any] { get }
-
+    // 是否使用模拟数据
+    var useMockData: Bool { get }
+    // 模拟数据
+    func mockDataResponse() -> Data
 }
 
 extension NetworkRequestProtocol {
@@ -31,5 +34,13 @@ extension NetworkRequestProtocol {
 
     var parameters: [String: Any] {
         return [:]
+    }
+
+    var useMockData: Bool {
+        return false
+    }
+
+    func mockDataResponse() -> Data {
+        return Data()
     }
 }
