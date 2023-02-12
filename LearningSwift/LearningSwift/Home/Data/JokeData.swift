@@ -15,14 +15,15 @@ struct JokeData: NetworkRequestProtocol {
     var parameters: [String : Any] = [
            "app_id": ConstEncryptValues.jokeAppId,
            "app_secret": ConstEncryptValues.jokeAppSecret,
-           "page":0]
+           "page":0
+           ]
     var headers: [String : String] = [:]
 }
 
 extension JokeData {
     // 是否使用模拟数据
     var useMockData: Bool {
-        return true
+        return false
     }
     // 模拟数据
     func mockDataResponse() -> Data {
