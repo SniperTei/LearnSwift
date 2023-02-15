@@ -18,17 +18,20 @@ protocol LoadingProtocol {
 
 extension LoadingProtocol {
     func startLoading() {
-        debugPrint("Protocol Start Loading")
+        debugPrint("Protocol Default Start Loading")
+
         UIApplication.shared.keyWindow?.addSubview(self.loadingView)
         self.loadingView.startLoading()
     }
     
     func stopLoading() {
-        debugPrint("Protocol Stop Loading")
-        // self.loadingView.stopLoading()
+        debugPrint("Protocol Default Stop Loading")
+        self.loadingView.stopLoading()
+
     }
 
     var loadingView: LoadingView {
-        return LoadingView.shared
+        let loadingView = LoadingView(frame: UIScreen.main.bounds)
+        return loadingView
     }
 }

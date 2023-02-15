@@ -23,7 +23,7 @@ struct JokeData: NetworkRequestProtocol {
 extension JokeData {
     // 是否使用模拟数据
     var useMockData: Bool {
-        return false
+        return true
     }
     // 模拟数据
     func mockDataResponse() -> Data {
