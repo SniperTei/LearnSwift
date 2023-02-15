@@ -64,6 +64,7 @@ class HomeViewController: BaseViewController {
         startLoading()
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            print("王德发")
             self.stopLoading()
         }
     }
@@ -92,7 +93,7 @@ extension HomeViewController {
                 let dataResponse = jokeListResponse?.data
                 let jokeList = dataResponse?.list
                 guard jokeList != nil else {
-                return
+                    return
                 }
                 for jokeItem in jokeList! {
                 self.jokeList.append(jokeItem)

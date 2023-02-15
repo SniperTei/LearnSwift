@@ -84,12 +84,11 @@ class LoadingView: UIView {
         self.activityIndicatorView.startAnimating()
         debugPrint("self.activityIndicatorView.center: \(self.activityIndicatorView.center)")
         debugPrint("self.activityIndicatorView.frame: \(self.activityIndicatorView.frame)")
-        debugPrint("self.activityIndicatorView.superview: \(self.activityIndicatorView.superview)")
+        debugPrint("self.activityIndicatorView.superview: \(String(describing: self.activityIndicatorView.superview))")
         debugPrint("self.activityIndicatorView.isAnimationg \(self.activityIndicatorView.isAnimating)")
     }
     
     func stopLoading() {
        activityIndicatorView.stopAnimating()
-       removeFromSuperview()
     }
 }
