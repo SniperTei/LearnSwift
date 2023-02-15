@@ -60,6 +60,12 @@ class HomeViewController: BaseViewController {
 
         fetchJokeList()
         fetchEverydayOne()
+
+        startLoading()
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.stopLoading()
+        }
     }
     
     func setupUI() {

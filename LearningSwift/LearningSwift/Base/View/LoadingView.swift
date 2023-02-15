@@ -10,9 +10,6 @@ import UIKit
 
 class LoadingView: UIView {
 
-    // 单例
-    // static let shared = LoadingView()
-
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
         // activityIndicatorView.color = .red
@@ -40,6 +37,15 @@ class LoadingView: UIView {
         loadingLabel.sizeToFit()
         return loadingLabel
     }()
+
+    // private lazy var loadingImageView: UIImageView = {
+    //     let loadingImageView = UIImageView()
+    //     let loadingUrl = URL(string: "https://img.zcool.cn/community/0177aa60ac8ffe11013f47208b2584.gif")
+    //     // loadingImageView.image = UIImage(named: "loading")
+    //     loadingImageView.kf.setImage(with: loadingUrl)
+    //     loadingImageView.sizeToFit()
+    //     return loadingImageView
+    // }()
     
     // 初始化
     override init(frame: CGRect) {
@@ -61,6 +67,9 @@ class LoadingView: UIView {
         self.activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         self.activityIndicatorView.center = CGPoint(x: self.loadingBackgroundView.frame.size.width * 0.5, y: self.loadingBackgroundView.frame.size.height * 0.5 - 10)
         self.loadingBackgroundView.addSubview(self.activityIndicatorView)
+        // self.loadingImageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        // self.loadingImageView.center = CGPoint(x: self.loadingBackgroundView.frame.size.width * 0.5, y: self.loadingBackgroundView.frame.size.height * 0.5 - 10)
+        // self.loadingBackgroundView.addSubview(self.loadingImageView)
         // loading文字提示
         self.loadingLabel.center = CGPoint(x: self.loadingBackgroundView.frame.size.width * 0.5, y: self.activityIndicatorView.center.y + 40)
         self.loadingBackgroundView.addSubview(self.loadingLabel)
@@ -71,13 +80,16 @@ class LoadingView: UIView {
     }
     
     func startLoading() {
+        // self.loadingImageView.startAnimating()
         self.activityIndicatorView.startAnimating()
         debugPrint("self.activityIndicatorView.center: \(self.activityIndicatorView.center)")
+        debugPrint("self.activityIndicatorView.frame: \(self.activityIndicatorView.frame)")
         debugPrint("self.activityIndicatorView.superview: \(self.activityIndicatorView.superview)")
         debugPrint("self.activityIndicatorView.isAnimationg \(self.activityIndicatorView.isAnimating)")
     }
     
     func stopLoading() {
-       self.activityIndicatorView.stopAnimating()
+       activityIndicatorView.stopAnimating()
+       removeFromSuperview()
     }
 }
