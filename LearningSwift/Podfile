@@ -1,4 +1,5 @@
-platform :ios, '11.0'
+#source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '12.0'
 
 project 'LearningSwift.xcodeproj'
 
@@ -6,4 +7,5 @@ target 'LearningSwift' do
     use_frameworks!
     pod 'Alamofire'
     pod 'HandyJSON', '~> 5.0.2'
+    #pod 'Kingfisher', '~>7.0'
 end
