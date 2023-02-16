@@ -11,6 +11,8 @@ import UIKit
 class LoadingView: UIView {
 
     static let shared = LoadingView(frame: UIScreen.main.bounds)
+    // 两个请求同事需要loading的时候，loadingCount会大于1, 等于0的时候才会隐藏loading
+    private var loadingCount: Int = 0
 
     private override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,15 +83,17 @@ class LoadingView: UIView {
     }
     
     func startLoading() {
-        // self.loadingImageView.startAnimating()
-        self.activityIndicatorView.startAnimating()
-        debugPrint("self.activityIndicatorView.center: \(self.activityIndicatorView.center)")
-        debugPrint("self.activityIndicatorView.frame: \(self.activityIndicatorView.frame)")
-        debugPrint("self.activityIndicatorView.superview: \(String(describing: self.activityIndicatorView.superview))")
-        debugPrint("self.activityIndicatorView.isAnimationg \(self.activityIndicatorView.isAnimating)")
+        loadingCount += 1
+        activityIndicatorView.startAnimating()
+        UIApplication.shared.keyWindow?.addSubview(self)
     }
     
     func stopLoading() {
-       activityIndicatorView.stopAnimating()
+        loadingCount -= 1
+        if loadingCount <= 0 {
+            activityIndicatorView.stopAnimating()
+            loadingCount = 0
+            self.removeFromSuperview()
+        }
     }
 }

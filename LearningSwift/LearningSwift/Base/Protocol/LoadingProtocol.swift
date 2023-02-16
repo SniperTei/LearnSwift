@@ -10,30 +10,21 @@ import UIKit
 
 protocol LoadingProtocol {
 
-    var loadingView: LoadingView { get }
-
     func startLoading()
     func stopLoading()
 }
 
 extension LoadingProtocol {
 
-    var loadingView: LoadingView {
-        let loadingView = LoadingView.shared
-        debugPrint("Protocol Default Loading View : \(loadingView)")
-        return loadingView
-    }
-
     func startLoading() {
         debugPrint("Protocol Default Start Loading")
-        debugPrint("Protocol Default Start Loading View : \(loadingView)")
-        UIApplication.shared.keyWindow?.addSubview(loadingView)
+        let loadingView = LoadingView.shared
         loadingView.startLoading()
     }
     
     func stopLoading() {
         debugPrint("Protocol Default Stop Loading")
-        self.loadingView.stopLoading()
-        self.loadingView.removeFromSuperview()
+        let loadingView = LoadingView.shared
+        loadingView.stopLoading()
     }
 }

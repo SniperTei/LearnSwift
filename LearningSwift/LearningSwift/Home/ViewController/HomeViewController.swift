@@ -62,9 +62,15 @@ class HomeViewController: BaseViewController {
         fetchEverydayOne()
 
         startLoading()
+        startLoading()
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             print("王德发")
+            self.stopLoading()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 8) {
+            print("王德发8")
             self.stopLoading()
         }
     }
