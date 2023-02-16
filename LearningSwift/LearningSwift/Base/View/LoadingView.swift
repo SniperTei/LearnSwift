@@ -10,6 +10,13 @@ import UIKit
 
 class LoadingView: UIView {
 
+    static let shared = LoadingView(frame: UIScreen.main.bounds)
+
+    private override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
         // activityIndicatorView.color = .red
@@ -46,12 +53,6 @@ class LoadingView: UIView {
     //     loadingImageView.sizeToFit()
     //     return loadingImageView
     // }()
-    
-    // 初始化
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
 
     func setupUI() {
         debugPrint("self setupUI")

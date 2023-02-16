@@ -19,7 +19,7 @@ protocol LoadingProtocol {
 extension LoadingProtocol {
 
     var loadingView: LoadingView {
-        let loadingView = LoadingView(frame: UIScreen.main.bounds)
+        let loadingView = LoadingView.shared
         debugPrint("Protocol Default Loading View : \(loadingView)")
         return loadingView
     }
@@ -34,6 +34,6 @@ extension LoadingProtocol {
     func stopLoading() {
         debugPrint("Protocol Default Stop Loading")
         self.loadingView.stopLoading()
-
+        self.loadingView.removeFromSuperview()
     }
 }
