@@ -13,7 +13,7 @@ enum NetworkResult<T> {
     case failure(Error)
 }
 
-class NetworkManager {
+class NetworkManager: LoadingProtocol {
     static let shared = NetworkManager()
     
     private init() {}
@@ -30,8 +30,9 @@ class NetworkManager {
             completion(.success(data.mockDataResponse()))
             return
         }
-        
-        AF.request(data.url, method: HTTPMethod(rawValue: data.method), parameters: data.parameters, encoding: URLEncoding.default, headers: HTTPHeaders(data.headers)).response { response in
+        startLoading()
+        AF.request(data.url, method: HTTPMethod(rawValue: data.method), parameters: data.parameters, encoding: URLEncoding.default, headers: HTTPHeaders(data.headers)).response { [weak self] response in
+            self?.stopLoading()
             if let error = response.error {
                 debugPrint("Response Error: \(error)")
                 completion(.failure(error))

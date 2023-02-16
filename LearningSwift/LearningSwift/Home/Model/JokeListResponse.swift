@@ -39,15 +39,15 @@ struct JokeListData: HandyJSON {
     }
 }
 
- struct JokeListResponse: BaseResponseProtocol, HandyJSON {
-     init() {
-         code = 0
-         msg = ""
-         data = JokeListData()
-     }
-    
-     typealias T = JokeListData
-     let code: Int
-     let msg: String
-     let data: JokeListData
- }
+struct JokeListResponse: BaseResponseProtocol, HandyJSON {
+    init() {
+        code = 0
+        msg = ""
+        data = JokeListData()
+    }
+
+    typealias T = JokeListData
+    let code: Int
+    let msg: String
+    let data: JokeListData
+}

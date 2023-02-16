@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 import HandyJSON
 
 class HomeViewController: BaseViewController {
@@ -60,19 +59,6 @@ class HomeViewController: BaseViewController {
 
         fetchJokeList()
         fetchEverydayOne()
-
-        startLoading()
-        startLoading()
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-            print("王德发")
-            self.stopLoading()
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 8) {
-            print("王德发8")
-            self.stopLoading()
-        }
     }
     
     func setupUI() {
@@ -102,7 +88,7 @@ extension HomeViewController {
                     return
                 }
                 for jokeItem in jokeList! {
-                self.jokeList.append(jokeItem)
+                    self.jokeList.append(jokeItem)
                 }
                 self.jokeTableView.reloadData()
             case .failure(let error):
@@ -114,7 +100,8 @@ extension HomeViewController {
     func fetchEverydayOne() {
 
         let everydayOneData = EverydayData(method: "GET")
-        NetworkManager.shared.sendRequest(everydayOneData) { (result) in
+        NetworkManager.shared.sendRequest(everydayOneData) { [weak self] (result) in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
                 if let strData = String(data: data, encoding: .utf8) {

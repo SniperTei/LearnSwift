@@ -7,5 +7,5 @@ target 'LearningSwift' do
     use_frameworks!
     pod 'Alamofire'
     pod 'HandyJSON', '~> 5.0.2'
-    #pod 'Kingfisher', '~>7.0'
+    pod 'Kingfisher', '~>7.0'
 end

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseViewController: UIViewController, LoadingProtocol {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
