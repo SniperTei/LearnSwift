@@ -45,7 +45,7 @@ struct MovieNewsResponse: NetworkResponseProtocol, HandyJSON {
     let code: Int
     let msg: String
     let data: MovieNewsRespData
-    let result : MovieNewsRespData
+    let result : MovieNewsRespData // 注意这里的接口返回是result 不是data  意外  意外
     
     typealias T = MovieNewsRespData
     // 初始化
