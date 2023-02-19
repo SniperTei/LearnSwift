@@ -17,6 +17,7 @@
 		7D0CC95429A20791006EF0D4 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0CC95329A20791006EF0D4 /* MineCell.swift */; };
 		7D0CC96329A20975006EF0D4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0CC96229A20975006EF0D4 /* LoadingView.swift */; };
 		7D0CC96629A2097F006EF0D4 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0CC96529A2097F006EF0D4 /* LoadingProtocol.swift */; };
+		7D0CC96929A20BE3006EF0D4 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0CC96829A20BE3006EF0D4 /* MineHeaderView.swift */; };
 		7D343F6C2978E942003684DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F6B2978E942003684DD /* AppDelegate.swift */; };
 		7D343F6E2978E942003684DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F6D2978E942003684DD /* SceneDelegate.swift */; };
 		7D343F702978E942003684DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F6F2978E942003684DD /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		7D0CC95329A20791006EF0D4 /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
 		7D0CC96229A20975006EF0D4 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		7D0CC96529A2097F006EF0D4 /* LoadingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
+		7D0CC96829A20BE3006EF0D4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		7D343F682978E942003684DD /* LearningSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D343F6B2978E942003684DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D343F6D2978E942003684DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				7D0CC95029A20788006EF0D4 /* SettingCell.swift */,
 				7D0CC95329A20791006EF0D4 /* MineCell.swift */,
+				7D0CC96829A20BE3006EF0D4 /* MineHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				7D0CC93B29A1DA2C006EF0D4 /* MovieNewsViewController.swift in Sources */,
 				7D34405429973F98003684DD /* JokeData.swift in Sources */,
 				7D343F8C29791417003684DD /* TabbarViewController.swift in Sources */,
+				7D0CC96929A20BE3006EF0D4 /* MineHeaderView.swift in Sources */,
 				7D0CC96629A2097F006EF0D4 /* LoadingProtocol.swift in Sources */,
 				7D343FB729850BF1003684DD /* EverydayOneWordResponse.swift in Sources */,
 				7D3440132990DCAF003684DD /* DynamicLaunchImage.swift in Sources */,

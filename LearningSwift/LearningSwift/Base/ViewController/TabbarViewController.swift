@@ -37,7 +37,7 @@ class TabbarViewController: UITabBarController {
         foodNav.tabBarItem.image = UIImage(named: "tabbar_food")
         foodNav.tabBarItem.selectedImage = UIImage(named: "tabbar_food_selected")
         
-        let mineVC = ViewController()
+        let mineVC = MineViewController()
         mineVC.title = "我的"
         let mineNav = UINavigationController(rootViewController: mineVC)
         mineNav.tabBarItem.title = "我的"

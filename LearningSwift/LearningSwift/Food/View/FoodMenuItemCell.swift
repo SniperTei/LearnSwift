@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class FoodMenuItemCell: UICollectionViewCell {
+
+    static let cellReuseId = "foodMenuItemCell"
+
     var imageView: UIImageView!
     var titleLabel: UILabel!
     

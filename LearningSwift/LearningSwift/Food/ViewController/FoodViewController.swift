@@ -11,8 +11,6 @@ import HandyJSON
 import Kingfisher
 
 class FoodViewController: BaseViewController {
-    
-    static let cellReuseId = "foodCell"
 
     lazy var foodCollectionView: UICollectionView = {
         let y: CGFloat = ConstSize.naviBarHeight
@@ -23,7 +21,7 @@ class FoodViewController: BaseViewController {
         let foodCollectionView = UICollectionView(frame: CGRect(x: 0, y: y, width: ConstSize.screenWidth, height: ConstSize.screenHeight - ConstSize.tabbarHeight - y), collectionViewLayout: layout)
         foodCollectionView.delegate = self
         foodCollectionView.dataSource = self
-        foodCollectionView.register(FoodMenuItemCell.self, forCellWithReuseIdentifier: FoodViewController.cellReuseId)
+        foodCollectionView.register(FoodMenuItemCell.self, forCellWithReuseIdentifier: FoodMenuItemCell.cellReuseId)
         foodCollectionView.backgroundColor = UIColor.white
         return foodCollectionView
     }()
@@ -75,7 +73,7 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodViewController.cellReuseId, for: indexPath) as! FoodMenuItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodMenuItemCell.cellReuseId, for: indexPath) as! FoodMenuItemCell
         let foodItem = foodList[indexPath.row]
         cell.titleLabel.text = foodItem.foodname
         print("foodItem.foodimg: \(foodItem.foodimg)")
