@@ -13,4 +13,5 @@ struct ConstEncryptValues {
     static let weatherKey = "1"
     static let everydayWordAppId = "1"
     static let everydayWordAppSecret = "1"
+    static let movieNewsKey = "1"
 }

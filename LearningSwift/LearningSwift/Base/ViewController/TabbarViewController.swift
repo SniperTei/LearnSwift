@@ -23,12 +23,12 @@ class TabbarViewController: UITabBarController {
         homeNav.tabBarItem.image = UIImage(named: "tabbar_home")
         homeNav.tabBarItem.selectedImage = UIImage(named: "tabbar_home_selected")
         
-        let categoryVC = ViewController()
-        categoryVC.title = "影视"
-        let categoryNav = UINavigationController(rootViewController: categoryVC)
-        categoryNav.tabBarItem.title = "影视"
-        categoryNav.tabBarItem.image = UIImage(named: "tabbar_play")
-        categoryNav.tabBarItem.selectedImage = UIImage(named: "tabbar_play_selected")
+        let movieNewsVC = MovieNewsViewController()
+        movieNewsVC.title = "影视"
+        let movieNewsNav = UINavigationController(rootViewController: movieNewsVC)
+        movieNewsNav.tabBarItem.title = "影视"
+        movieNewsNav.tabBarItem.image = UIImage(named: "tabbar_play")
+        movieNewsNav.tabBarItem.selectedImage = UIImage(named: "tabbar_play_selected")
         
         let foodVC = FoodViewController()
         foodVC.title = "美食"
@@ -44,7 +44,7 @@ class TabbarViewController: UITabBarController {
         mineNav.tabBarItem.image = UIImage(named: "tabbar_mine")
         mineNav.tabBarItem.selectedImage = UIImage(named: "tabbar_mine_selected")
         
-        self.viewControllers = [homeNav, categoryNav, foodNav, mineNav]
+        self.viewControllers = [homeNav, movieNewsNav, foodNav, mineNav]
     }
 
     override func didReceiveMemoryWarning() {

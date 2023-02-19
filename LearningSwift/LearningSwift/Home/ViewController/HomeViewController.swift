@@ -61,7 +61,7 @@ class HomeViewController: BaseViewController {
         fetchEverydayOne()
     }
     
-    func setupUI() {
+    private func setupUI() {
         view.backgroundColor = UIColor.orange
         title = "首页"
         // 头部每日一句

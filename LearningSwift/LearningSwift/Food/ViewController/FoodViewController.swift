@@ -40,7 +40,7 @@ class FoodViewController: BaseViewController {
         fetchFoodList()
     }
     
-    func setupUI() {
+    private func setupUI() {
         view.addSubview(foodCollectionView)
     }
 }
