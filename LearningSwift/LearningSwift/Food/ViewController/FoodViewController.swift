@@ -79,7 +79,7 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let foodItem = foodList[indexPath.row]
         cell.titleLabel.text = foodItem.foodname
         print("foodItem.foodimg: \(foodItem.foodimg)")
-        cell.imageView.kf.setImage(with: URL(string: foodItem.foodimg) ?? URL(string: "https://www.baidu.com/img/bd_logo1.png"))!
+//        cell.imageView.kf.setImage(with: URL(string: foodItem.foodimg) ?? URL(string: "https://www.baidu.com/img/bd_logo1.png"))!
         return cell
     }
     

@@ -22,7 +22,7 @@ struct MovieNewsData: NetworkRequestProtocol {
 extension MovieNewsData {
 
     var useMockData: Bool {
-        return false
+        return true
     }
     func mockDataResponse() -> Data {
         let data = [
