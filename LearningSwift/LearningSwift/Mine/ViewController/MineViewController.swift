@@ -27,9 +27,71 @@ class MineViewController: BaseViewController {
         return tableView
     }()
 
-    private lazy var settingDataList: [String] = {
+    private lazy var settingDataList: [[String: Any]] = {
         // TODO: 先写死, 后期再优化
-        return ["设置", "工具", "通用", "关于"]
+        let settingArray = [
+            [
+                "title":"通用",
+                "name":"general",
+                "icon":"icon",
+                "children":[]
+            ],
+            [
+                "title":"设置",
+                "name":"setting",
+                "icon":"icon",
+                "children":[]
+            ],
+            [
+                "title":"工具",
+                "name":"tool",
+                "icon":"icon",
+                "children":[
+                    [
+                        "title":"计算器",
+                        "name":"calculator",
+                        "icon":"icon",
+                    ],
+                    [
+                        "title":"彩票",
+                        "name":"lottery",
+                        "icon":"icon",
+                    ],
+                    [
+                        "title":"天气",
+                        "name":"weather",
+                        "icon":"icon",
+                    ],
+                    [
+                        "title":"音乐",
+                        "name":"music",
+                        "icon":"icon",
+                    ],
+                    [
+                        "title":"视频",
+                        "name":"video",
+                        "icon":"icon",
+                    ],
+                    [
+                        "title":"相册",
+                        "name":"album",
+                        "icon":"icon",
+                    ],
+                    [
+                        "title":"游戏",
+                        "name":"game",
+                        "icon":"icon",
+                    ],
+                ]
+            ],
+            [
+                "title":"关于",
+                "name":"about",
+                "icon":"icon",
+                "children":[]
+            ],
+        ]
+        return settingArray
     }()
 
     override func viewDidLoad() {
@@ -68,17 +130,18 @@ extension MineViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MineCell.cellReuseId, for: indexPath)
         cell.selectionStyle = .none
-        cell.textLabel?.text = settingDataList[indexPath.section]
+        let settingJSON = settingDataList[indexPath.section]
+        cell.textLabel?.text = settingJSON["title"] as? String
+        // cell.textLabel?.text = settingDataList[indexPath.section]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            let settingVC = SettingViewController()
-            self.navigationController?.pushViewController(settingVC, animated: true)
-        default:
-            break
-        }
+        let settingVC = SettingViewController()
+        let settingJSON = settingDataList[indexPath.section]
+        settingVC.title = settingJSON["title"] as? String
+        settingVC.hidesBottomBarWhenPushed = true
+        settingVC.settingDataList = settingJSON["children"] as! [[String : Any]]
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
 }

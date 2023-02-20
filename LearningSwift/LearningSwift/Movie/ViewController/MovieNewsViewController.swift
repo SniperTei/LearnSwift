@@ -88,9 +88,9 @@ extension MovieNewsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension MovieNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // let movieNewsItem = movieNewsList[indexPath.row]
-        // let movieNewsDetailVC = MovieNewsDetailViewController()
-        // movieNewsDetailVC.movieNewsItem = movieNewsItem
-        // self.navigationController?.pushViewController(movieNewsDetailVC, animated: true)
+        let movieNewsItem = movieNewsList[indexPath.row]
+        let movieNewsDetailVC = BrowseWebViewController(url: movieNewsItem.url)
+        movieNewsDetailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(movieNewsDetailVC, animated: true)
     }
 }
