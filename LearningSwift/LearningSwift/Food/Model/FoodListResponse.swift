@@ -23,18 +23,24 @@ struct FoodItem: HandyJSON {
     }
 }
 
-struct FoodMenuListData: HandyJSON{
-    // let page: Int
-    // let totalCount: Int
-    // let totalPage: Int
-    // let limit: Int
-    let menulist: [FoodItem]
+struct FoodTypeItem: HandyJSON {
+    let foodtype: String
+    let foodtypename: String
+    let foodlist: [FoodItem]
 
     init() {
-        // page = 0
-        // totalCount = 0
-        // totalPage = 0
-        // limit = 0
+        foodtype = ""
+        foodlist = []
+        foodtypename = ""
+    }
+}
+
+struct FoodMenuListData: HandyJSON{
+    
+    let menulist: [FoodTypeItem]
+
+    init() {
+        
         menulist = []
     }
 }
