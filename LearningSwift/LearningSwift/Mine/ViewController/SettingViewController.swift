@@ -57,5 +57,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let title = settingJSON["title"] as? String
         let name = settingJSON["name"] as? String
         print("title: \(title ?? ""), name: \(name ?? "")")
+        if "calculator" == name {
+            let testVC = TestViewController()
+            self.navigationController?.pushViewController(testVC, animated: true)
+        }
     }
 }
