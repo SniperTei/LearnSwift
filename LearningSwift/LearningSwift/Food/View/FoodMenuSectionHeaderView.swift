@@ -14,7 +14,7 @@ class FoodMenuSectionHeaderView: UICollectionReusableView {
 
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleLabel.textColor = UIColor.black
         return titleLabel
     }()

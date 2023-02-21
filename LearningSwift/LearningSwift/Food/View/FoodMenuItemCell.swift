@@ -33,11 +33,27 @@ class FoodMenuItemCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // 圆角图片
+    func loadCornerImage(url: String) {
+        let url = URL(string: url)
+        let placeholder = ConstColor.colorToImage(color: UIColor.lightGray)
+        imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil) { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let value):
+                let roundImg = value.image.kf.image(withRoundRadius: 10, fit: self.imageView.bounds.size)
+                self.imageView.image = roundImg
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.imageView.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.size.width, height: self.contentView.frame.size.height - 20)
-        self.titleLabel.frame = CGRect(x: 0, y: self.imageView.frame.size.height, width: self.contentView.frame.size.width, height: 20)
+        self.imageView.frame = CGRect(x: 10, y: 10, width: self.contentView.frame.size.width - 20, height: self.contentView.frame.size.height - 40)
+        self.titleLabel.frame = CGRect(x: 10, y: self.imageView.frame.size.height + 10, width: self.contentView.frame.size.width - 20, height: 20)
     }
 }

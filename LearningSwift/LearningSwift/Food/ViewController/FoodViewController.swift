@@ -16,16 +16,15 @@ class FoodViewController: BaseViewController {
         let y: CGFloat = ConstSize.naviBarHeight
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: ConstSize.screenWidth / 4, height: ConstSize.screenWidth / 4)
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10    
         layout.headerReferenceSize = CGSize(width: ConstSize.screenWidth, height: 60)
         let foodCollectionView = UICollectionView(frame: CGRect(x: 0, y: y, width: ConstSize.screenWidth, height: ConstSize.screenHeight - ConstSize.tabbarHeight - y), collectionViewLayout: layout)
         foodCollectionView.delegate = self
         foodCollectionView.dataSource = self
         foodCollectionView.register(FoodMenuSectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FoodMenuSectionHeaderView.headerReuseId)
         foodCollectionView.register(FoodMenuItemCell.self, forCellWithReuseIdentifier: FoodMenuItemCell.cellReuseId)
-        // foodCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "UICollectionReusableView.reuseId")
-        foodCollectionView.backgroundColor = UIColor.white
+        foodCollectionView.backgroundColor = ConstColor.hexColorWithAlpha(hex: "EEEEFF", alpha: 1.0)
         return foodCollectionView
     }()
     
@@ -75,13 +74,11 @@ extension FoodViewController {
 extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("foodList.count: \(foodList.count)")
         return self.foodList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let foodTypeItem = foodList[section]
-        print("foodTypeItem.foodlist.count: \(foodTypeItem.foodlist.count)")
         return foodTypeItem.foodlist.count
     }
 
@@ -92,21 +89,8 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
             headerView.titleLabel.text = foodTypeItem.foodtypename
             return headerView
         }
-        // if kind == UICollectionView.elementKindSectionFooter {
-        //     let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "UICollectionReusableView.reuseId", for: indexPath)
-        //     footerView.backgroundColor = UIColor.orange
-        //     return footerView
-        // }
         return UICollectionReusableView()
     }
-
-    // func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    //     return CGSize(width: ConstSize.screenWidth, height: 30)
-    // }
-
-    // func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-    //     return CGSize(width: ConstSize.screenWidth, height: 10)
-    // }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodMenuItemCell.cellReuseId, for: indexPath) as! FoodMenuItemCell
@@ -114,8 +98,7 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let foodlist = foodTypeItem.foodlist
         let foodItem = foodlist[indexPath.row]
         cell.titleLabel.text = foodItem.foodname
-//        print("foodItem.foodimg: \(foodItem.foodimg)")
-       cell.imageView.kf.setImage(with: URL(string: foodItem.foodimg))
+        cell.loadCornerImage(url: foodItem.foodimg)
         return cell
     }
     
