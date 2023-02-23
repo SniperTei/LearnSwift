@@ -7,25 +7,33 @@
 
 import Foundation
 
-class Calculator {
+class Calculator<T: FloatingPoint> {
     // +
-    func addTo(_ num: Int) -> (Int) -> Int {
-        return { num + $0 }
+    func addTo(_ num: T) -> (T) -> T {
+        return { $0 + num }
     }
     // -
-    func subtractFrom(_ num: Int) -> (Int) -> Int {
-        return { num - $0 }
+    func subtractFrom(_ num: T) -> (T) -> T {
+        return { $0 - num }
     }
     // *
-    func multiplyBy(_ num: Int) -> (Int) -> Int {
-        return { num * $0 }
+    func multiplyBy(_ num: T) -> (T) -> T {
+        return { $0 * num }
     }
     // /
-    func divideBy(_ num: Int) -> (Int) -> Int {
-        return { num / $0 }
+    func divideBy(_ num: T) -> (T) -> T {
+        return { $0 / num }
     }
-    // 
-    func calculate(_ num: Int, by operation: (Int) -> Int) -> Int {
-        return operation(num)
+}
+
+// 自定义运算符 >>>
+infix operator >>>: AdditionPrecedence
+// 支持任意类型的>>>
+func >>> <T>(_ left: @escaping (T) -> T, _ right: @escaping (T) -> T) -> (T) -> T {
+    return {
+        print("$0 \($0)")
+        let result = left($0)
+        print("result \(result)")
+        return right(result)
     }
 }
