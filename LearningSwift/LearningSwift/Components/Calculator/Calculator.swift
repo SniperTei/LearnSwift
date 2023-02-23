@@ -22,6 +22,10 @@ class Calculator<T: FloatingPoint> {
     }
     // /
     func divideBy(_ num: T) -> (T) -> T {
+        // 不能除0
+        guard num != 0 else {
+            return { $0 }
+        }
         return { $0 / num }
     }
 }
