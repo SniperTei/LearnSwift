@@ -8,12 +8,28 @@
 import XCTest
 @testable import LearningSwift
 
+struct TestData: NetworkRequestProtocol {
+    var method: String
+    
+    // 接口地址
+    var url: URL = URL(string: "https://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1")!
+    var parameters: [String : Any] = [
+            "app_id": ConstEncryptValues.everydayWordAppId,
+            "app_secret": ConstEncryptValues.everydayWordAppSecret,
+            "count":4]
+    var headers: [String : String] = [:]
+}
+
 class TestNetworkManager: XCTestCase {
 
+    var data: TestData!
     var networkManager: NetworkManager!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        data = TestData(method: "GET")
+        networkManager = NetworkManager.shared
+
     }
 
     override func tearDownWithError() throws {
@@ -21,29 +37,27 @@ class TestNetworkManager: XCTestCase {
     }
 
     func testRandomNumber() throws {
-        let urlString = "https://www.randomnumberapi.com/api/v10.0/random?min=0&max=100&count=1"
-        let url = URL(string: urlString)!
+        // let urlString = "https://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1"
+        // let url = URL(string: "https://www.randomnumberapi.com/test")! 404的
+        // let url = URL(string: urlString)!
 
-        let promise = expectation(description: "Status code: 404")
+        // let promise = expectation(description: "Status code: 404")
+        let promise = expectation(description: "Status code: 200")
 
-        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                XCTFail("Error: \(error.localizedDescription)")
-                return
-            } else if let statusCode = (response as? HTTPURLResponse)?.statusCode {
-                if statusCode == 200 {
-                    promise.fulfill()
-                } else if statusCode == 404 {
-                    XCTFail("Status code: \(statusCode)")
-                } else {
-                    XCTFail("Status code: \(statusCode)")
-                }
+        networkManager.sendRequest(data) { (result) in
+            switch result {
+            case .success(let data):
+                print("data: \(data)")
+//                XCTFail("data: \(data)")
+                promise.fulfill()
+            case .failure(let error):
+                print("error: \(error)")
+//                 promise.fulfill()
+                XCTFail("error: \(error)")
             }
         }
 
-        dataTask.resume()
-
-        wait(for: [promise], timeout: 5)
+        wait(for: [promise], timeout: 30)
     }
 
     func testExample() throws {
