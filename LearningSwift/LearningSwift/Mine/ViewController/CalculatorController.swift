@@ -163,7 +163,6 @@ class CalculatorController: BaseViewController {
                 calculate()
                 textLabel.text = String(num0) + "+" + String(num1)
             }
-            guard let text = textLabel.text else { return }
             operString = "+"
             tempNum = ""
         case 11:
@@ -177,11 +176,10 @@ class CalculatorController: BaseViewController {
             } else {
                 num1 = Double(tempNum)!
                 calculate()
-                textLabel.text = textLabel.text! + "-" + String(result)
+                guard let text = textLabel.text else { return }
+                textLabel.text = String(num0) + "-" + String(num1)
             }
-            guard let text = textLabel.text else { return }
             operString = "-"
-            textLabel.text = textLabel.text! + operString + String(result)
             tempNum = ""
         case 12:
             if result != 0 {
@@ -194,11 +192,10 @@ class CalculatorController: BaseViewController {
             } else {
                 num1 = Double(tempNum)!
                 calculate()
-                textLabel.text = textLabel.text! + "*" + String(result)
+                guard let text = textLabel.text else { return }
+                textLabel.text = textLabel.text! + "*" + String(num1)
             }
-            guard let text = textLabel.text else { return }
             operString = "*"
-            textLabel.text = textLabel.text! + operString + String(result)
             tempNum = ""
         case 13:
         if result != 0 {
@@ -211,9 +208,9 @@ class CalculatorController: BaseViewController {
             } else {
                 num1 = Double(tempNum)!
                 calculate()
-                textLabel.text = textLabel.text! + "/" + String(result)
+                guard let text = textLabel.text else { return }
+                textLabel.text = textLabel.text! + "/" + String(num1)
             }
-            guard let text = textLabel.text else { return }
             operString = "/"
             tempNum = ""
         case 14:

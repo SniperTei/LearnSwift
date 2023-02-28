@@ -145,7 +145,7 @@ class TestViewController: BaseViewController {
                 calculate()
             }
             operString = "+"
-            tempNum = ""
+            tempNum = "0"
         case 11:
             if num0 == 0 {
                 num0 = Double(tempNum)!
@@ -154,7 +154,7 @@ class TestViewController: BaseViewController {
                 calculate()
             }
             operString = "-"
-            tempNum = ""
+            tempNum = "0"
         case 12:
             if num0 == 0 {
                 num0 = Double(tempNum)!
@@ -163,7 +163,7 @@ class TestViewController: BaseViewController {
                 calculate()
             }
             operString = "*"
-            tempNum = ""
+            tempNum = "0"
         case 13:
             if num0 == 0 {
                 num0 = Double(tempNum)!
@@ -172,7 +172,7 @@ class TestViewController: BaseViewController {
                 calculate()
             }
             operString = "/"
-            tempNum = ""
+            tempNum = "0"
         case 14:
             // 14是小数点
             print(".")
@@ -180,7 +180,7 @@ class TestViewController: BaseViewController {
             // 15是清除
             print("C")
             operString = "="
-            tempNum = ""
+            tempNum = "0"
             num0 = 0
             num1 = 0
         case 16:
@@ -192,7 +192,7 @@ class TestViewController: BaseViewController {
             print("result = \(result)")
             operString = "="
             tempNum = "0"
-            print("result = \(result)")
+            // print("result = \(result)")
         default:
             // 0 ~ 9
             if operString == "=" {
@@ -201,7 +201,8 @@ class TestViewController: BaseViewController {
                 num1 = 0
             }
             print(sender.tag)
-            tempNum = tempNum + String(sender.tag)
+            self.tempNum = self.tempNum + "\(sender.tag)"
+//            tempNum.append(String(sender.tag))
             print("tempNum = \(tempNum)")
         }
     }
