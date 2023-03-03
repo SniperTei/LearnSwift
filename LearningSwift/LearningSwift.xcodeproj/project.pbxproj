@@ -23,6 +23,7 @@
 		7D0CC98929A49A51006EF0D4 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0CC98829A49A51006EF0D4 /* Calculator.swift */; };
 		7D0CC98C29A4AB93006EF0D4 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0CC98B29A4AB93006EF0D4 /* TestViewController.swift */; };
 		7D0CC9C429AE3B7C006EF0D4 /* CalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0CC9C329AE3B7C006EF0D4 /* CalculatorController.swift */; };
+		7D0CC9C929AE569A006EF0D4 /* LotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0CC9C829AE569A006EF0D4 /* LotteryViewController.swift */; };
 		7D343F6C2978E942003684DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F6B2978E942003684DD /* AppDelegate.swift */; };
 		7D343F6E2978E942003684DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F6D2978E942003684DD /* SceneDelegate.swift */; };
 		7D343F732978E942003684DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D343F712978E942003684DD /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		7D0CC98829A49A51006EF0D4 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		7D0CC98B29A4AB93006EF0D4 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		7D0CC9C329AE3B7C006EF0D4 /* CalculatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorController.swift; sourceTree = "<group>"; };
+		7D0CC9C829AE569A006EF0D4 /* LotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewController.swift; sourceTree = "<group>"; };
 		7D343F682978E942003684DD /* LearningSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D343F6B2978E942003684DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D343F6D2978E942003684DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				7D0CC94929A1F1BD006EF0D4 /* MineViewController.swift */,
 				7D0CC94C29A20254006EF0D4 /* SettingViewController.swift */,
 				7D0CC9C329AE3B7C006EF0D4 /* CalculatorController.swift */,
+				7D0CC9C829AE569A006EF0D4 /* LotteryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				7D34405429973F98003684DD /* JokeData.swift in Sources */,
 				7D343F8C29791417003684DD /* TabbarViewController.swift in Sources */,
 				7D0CC96929A20BE3006EF0D4 /* MineHeaderView.swift in Sources */,
+				7D0CC9C929AE569A006EF0D4 /* LotteryViewController.swift in Sources */,
 				7D0CC96629A2097F006EF0D4 /* LoadingProtocol.swift in Sources */,
 				7D343FB729850BF1003684DD /* EverydayOneWordResponse.swift in Sources */,
 				7D3440132990DCAF003684DD /* DynamicLaunchImage.swift in Sources */,
