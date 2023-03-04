@@ -7,21 +7,63 @@
 
 import Foundation
 import UIKit
+import SnapKit
+
+enum LotteryType: Int {
+    case doubleColorBall = 0
+    case bigHappyBall = 1
+}
 
 class LotteryViewController: BaseViewController {
+    // 彩票类型
+    private var lotteryType: LotteryType = .doubleColorBall
+
+    // private var lotteryTypeList: [String] = ["双色球", "大乐透"]
+
+    private lazy var lotteryTypeTextField: UITextField = {
+        let textField = UITextField(frame: CGRect(x: 20, y: ConstSize.naviBarHeight + 20, width: self.view.frame.size.width - 40, height: 30))
+        textField.placeholder = "请选择彩票类型"
+        textField.inputView = self.lotteryTypeInputView
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.textColor = UIColor.black
+        textField.textAlignment = .center
+        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 5
+        textField.layer.masksToBounds = true
+        return textField
+    }()
+
+   private lazy var lotteryTypeInputView: CustomListInputView = {
+
+       let view = CustomListInputView(title: "彩票类型", list: ["双色球", "大乐透"])
+       view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200)
+       view.backgroundColor = UIColor.white
+       view.customListInputViewDidSelect = { [weak self] index in
+           guard let self = self else { return }
+           if index == -1 { // 取消
+               self.view.endEditing(true)
+               return
+           }
+           self.lotteryType = index == 0 ? .doubleColorBall : .bigHappyBall
+           self.lotteryTypeTextField.text = self.lotteryType == .doubleColorBall ? "双色球" : "大乐透"
+           self.view.endEditing(true)
+       }
+       return view
+   }()
+
     // 生成的彩票列表
     private lazy var lotteryTableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: SettingCell.cellReuseId)
-        tableView.frame = CGRect(x: 0, y: ConstSize.naviBarHeight + 20 + 30, width: self.view.frame.size.width, height: self.view.frame.size.height - ConstSize.naviBarHeight)
+        tableView.frame = CGRect(x: 0, y: ConstSize.naviBarHeight + 20 + 90, width: self.view.frame.size.width, height: self.view.frame.size.height - ConstSize.naviBarHeight)
         tableView.rowHeight = 50
         return tableView
     }()
     // 生成数量
     private lazy var generateTextField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 20, y: ConstSize.naviBarHeight + 20, width: 120, height: 30))
+        let textField = UITextField(frame: CGRect(x: 20, y: ConstSize.naviBarHeight + 70, width: 120, height: 30))
         textField.placeholder = "生成数量"
         textField.borderStyle = .roundedRect
         textField.keyboardType = .numberPad
@@ -60,11 +102,20 @@ class LotteryViewController: BaseViewController {
     }
 
     private func setupUI() {
-        view.addSubview(generateTextField)
+        view.addSubview(lotteryTypeTextField)
+        // 彩票类型
+        lotteryTypeInputView.customListInputViewDidSelect = { [weak self] index in
+            guard let self = self else { return }
+            self.lotteryType = index == 0 ? .doubleColorBall : .bigHappyBall
+            self.lotteryTypeTextField.text = self.lotteryType == .doubleColorBall ? "双色球" : "大乐透"
+        }
         
+        // 生成数量
+        view.addSubview(generateTextField)
+        // 生成按钮
         view.addSubview(generateButton)
-        generateButton.frame = CGRect(x: view.frame.size.width - 100 - 20, y: ConstSize.naviBarHeight + 20, width: 100, height: 30)
-
+        generateButton.frame = CGRect(x: view.frame.size.width - 100 - 20, y: ConstSize.naviBarHeight + 70, width: 100, height: 30)
+        // 结果列表
         view.addSubview(lotteryTableView)
     }
 
@@ -78,13 +129,18 @@ class LotteryViewController: BaseViewController {
         lotteryList.removeAll()
 
         for _ in 0..<count {
-            let lottery = randomLotteryNumberDoubleColor()
-            let lotteryString = "红球: \(lottery.0) 蓝球: \(lottery.1)"
-            lotteryList.append(lotteryString)
+            if lotteryType == .doubleColorBall {
+                let (redBall, blueBall) = randomLotteryNumberDoubleColor()
+                let lottery = "红球: \(redBall) 蓝球: \(blueBall)"
+                lotteryList.append(lottery)
+            } else {
+                let (redBall, blueBall) = randomLotteryNumberBigHappy()
+                let lottery = "红球: \(redBall) 蓝球: \(blueBall)"
+                lotteryList.append(lottery)
+            }
         }
         lotteryTableView.reloadData()
     }
-
     
     // 随机生成双色球
     private func randomLotteryNumberDoubleColor() -> ([Int], Int) {

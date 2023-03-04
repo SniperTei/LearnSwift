@@ -2,23 +2,27 @@ PODS:
   - Alamofire (5.6.4)
   - HandyJSON (5.0.2)
   - Kingfisher (7.6.1)
+  - SnapKit (5.6.0)
 
 DEPENDENCIES:
   - Alamofire
   - HandyJSON (~> 5.0.2)
   - Kingfisher (~> 7.0)
+  - SnapKit (~> 5.6.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - HandyJSON
     - Kingfisher
+    - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Kingfisher: 93a3c6d0d551658a31e19f21747e1d15cb39d525
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 8e89f4a67b9488c12b2abc673bf84328a5adafde
+PODFILE CHECKSUM: 59c5f50f76cf8fa6686aaa7eebbf8b6f86ad7d14
 
 COCOAPODS: 1.10.1
