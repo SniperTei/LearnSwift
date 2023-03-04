@@ -63,8 +63,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(calculatorVC, animated: true)
         }
         if "lottery" == name {
-            // let lotteryVC = LotteryViewController()
-            let lotteryVC = TestViewController()
+            let lotteryVC = LotteryViewController()
+            // let lotteryVC = TestViewController()
             self.navigationController?.pushViewController(lotteryVC, animated: true)
         }
     }

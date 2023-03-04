@@ -37,8 +37,8 @@ class TestViewController: BaseViewController {
         let redBall = redBallRandom[0...5]
         let blueBall = blueBallRandom[0]
         
-        print("红球: \(redBall.sorted())")
-        print("蓝球: \(blueBall)")
+        // print("红球: \(redBall.sorted())")
+        // print("蓝球: \(blueBall)")
 
         return (redBall.sorted(), blueBall)
     }
@@ -54,8 +54,8 @@ class TestViewController: BaseViewController {
         let redBall = redBallRandom[0...4]
         let blueBall = blueBallRandom[0...1]
         
-        print("红球: \(redBall.sorted())")
-        print("蓝球: \(blueBall.sorted())")
+        // print("红球: \(redBall.sorted())")
+        // print("蓝球: \(blueBall.sorted())")
 
         return (redBall.sorted(), blueBall.sorted())
     }
