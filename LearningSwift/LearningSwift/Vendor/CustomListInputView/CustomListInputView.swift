@@ -64,6 +64,9 @@ class CustomListInputView: UIView {
     //  选中回调
     var customListInputViewDidSelect: ((Int) -> Void)?
 
+    // 取消回调
+    var customListInputViewDidCancel: (() -> Void)?
+
     private func setupUI() {
         self.backgroundColor = UIColor.white
         self.addSubview(self.titleLabel)
@@ -113,7 +116,6 @@ extension CustomListInputView: UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension CustomListInputView {
     @objc private func toolBarCancelButtonAction() {
-        customListInputViewDidSelect?(-1)
         self.removeFromSuperview()
     }
     

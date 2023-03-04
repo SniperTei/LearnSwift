@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import Toast_Swift
 
 enum LotteryType: Int {
     case doubleColorBall = 0
@@ -40,13 +41,15 @@ class LotteryViewController: BaseViewController {
        view.backgroundColor = UIColor.white
        view.customListInputViewDidSelect = { [weak self] index in
            guard let self = self else { return }
-           if index == -1 { // 取消
-               self.view.endEditing(true)
-               return
-           }
+           print("select index: \(index)")
            self.lotteryType = index == 0 ? .doubleColorBall : .bigHappyBall
            self.lotteryTypeTextField.text = self.lotteryType == .doubleColorBall ? "双色球" : "大乐透"
-           self.view.endEditing(true)
+           self.lotteryTypeTextField.resignFirstResponder()
+       }
+       view.customListInputViewDidCancel = { [weak self] in
+           guard let self = self else { return }
+           self.lotteryTypeTextField.text = ""
+           self.lotteryTypeTextField.resignFirstResponder()
        }
        return view
    }()
@@ -109,7 +112,6 @@ class LotteryViewController: BaseViewController {
             self.lotteryType = index == 0 ? .doubleColorBall : .bigHappyBall
             self.lotteryTypeTextField.text = self.lotteryType == .doubleColorBall ? "双色球" : "大乐透"
         }
-        
         // 生成数量
         view.addSubview(generateTextField)
         // 生成按钮
@@ -117,12 +119,16 @@ class LotteryViewController: BaseViewController {
         generateButton.frame = CGRect(x: view.frame.size.width - 100 - 20, y: ConstSize.naviBarHeight + 70, width: 100, height: 30)
         // 结果列表
         view.addSubview(lotteryTableView)
+        // 默认双色球
+        lotteryTypeTextField.text = "双色球"
+        self.lotteryType = .doubleColorBall
     }
 
     @objc private func generateButtonAction() {
         generateTextField.resignFirstResponder()
         let count = Int(generateTextField.text ?? "0") ?? 0
         if count <= 0 {
+            self.view.makeToast("请输入正确的生成数量")
             return
         }
 
