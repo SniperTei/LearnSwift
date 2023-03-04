@@ -119,14 +119,17 @@ class LotteryViewController: BaseViewController {
         generateButton.frame = CGRect(x: view.frame.size.width - 100 - 20, y: ConstSize.naviBarHeight + 70, width: 100, height: 30)
         // 结果列表
         view.addSubview(lotteryTableView)
-        // 默认双色球
-        lotteryTypeTextField.text = "双色球"
-        self.lotteryType = .doubleColorBall
+        
+        lotteryTypeTextField.text = ""
     }
 
     @objc private func generateButtonAction() {
         generateTextField.resignFirstResponder()
         let count = Int(generateTextField.text ?? "0") ?? 0
+        if lotteryTypeTextField.text?.isEmpty ?? true {
+            self.view.makeToast("请选择彩票类型")
+            return
+        }
         if count <= 0 {
             self.view.makeToast("请输入正确的生成数量")
             return
