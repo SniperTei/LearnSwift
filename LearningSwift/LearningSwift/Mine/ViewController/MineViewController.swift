@@ -137,11 +137,22 @@ extension MineViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let settingVC = SettingViewController()
         let settingJSON = settingDataList[indexPath.section]
-        settingVC.title = settingJSON["title"] as? String
-        settingVC.hidesBottomBarWhenPushed = true
-        settingVC.settingDataList = settingJSON["children"] as! [[String : Any]]
-        self.navigationController?.pushViewController(settingVC, animated: true)
+        let title = settingJSON["title"] as? String
+        let name = settingJSON["name"] as? String
+        if name == "about" { // 关于
+            let aboutVC = AboutUsController()
+            aboutVC.title = title
+            aboutVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(aboutVC, animated: true)
+            return
+        } else if name == "tool" { // 工具
+            let toolVc = ToolViewController()
+            toolVc.title = title
+            toolVc.settingDataList = settingJSON["children"] as? [[String : Any]] ?? []
+            toolVc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(toolVc, animated: true)
+            return
+        }
     }
 }
