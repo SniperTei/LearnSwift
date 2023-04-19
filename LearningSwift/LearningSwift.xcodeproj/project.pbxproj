@@ -55,6 +55,7 @@
 		7D3440A1299E2767003684DD /* FoodListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3440A0299E2767003684DD /* FoodListData.swift */; };
 		7D3440AB299E2B37003684DD /* FoodListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3440AA299E2B37003684DD /* FoodListResponse.swift */; };
 		7D3440B4299E74B6003684DD /* FoodMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3440B3299E74B6003684DD /* FoodMenuItemCell.swift */; };
+		7DEA33C329F0155400285495 /* FoodDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEA33C229F0155400285495 /* FoodDetailController.swift */; };
 		EB409DD705C761249D2B3C2C /* Pods_LearningSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606E2856F7CF4C9BA32AA028 /* Pods_LearningSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		7D3440A0299E2767003684DD /* FoodListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListData.swift; sourceTree = "<group>"; };
 		7D3440AA299E2B37003684DD /* FoodListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListResponse.swift; sourceTree = "<group>"; };
 		7D3440B3299E74B6003684DD /* FoodMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenuItemCell.swift; sourceTree = "<group>"; };
+		7DEA33C229F0155400285495 /* FoodDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailController.swift; sourceTree = "<group>"; };
 		B1598CF69195987B15AB5CCE /* Pods-LearningSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSwift.release.xcconfig"; path = "Target Support Files/Pods-LearningSwift/Pods-LearningSwift.release.xcconfig"; sourceTree = "<group>"; };
 		CC398A83B02BE14F963E64F3 /* Pods-LearningSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSwift.debug.xcconfig"; path = "Target Support Files/Pods-LearningSwift/Pods-LearningSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -460,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				7D34409C299DFA52003684DD /* FoodViewController.swift */,
+				7DEA33C229F0155400285495 /* FoodDetailController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				7D0CC96329A20975006EF0D4 /* LoadingView.swift in Sources */,
 				7D0CC9C429AE3B7C006EF0D4 /* CalculatorController.swift in Sources */,
 				7D34409D299DFA52003684DD /* FoodViewController.swift in Sources */,
+				7DEA33C329F0155400285495 /* FoodDetailController.swift in Sources */,
 				7D343F6C2978E942003684DD /* AppDelegate.swift in Sources */,
 				7D343FA7297D2429003684DD /* BaseResponse.swift in Sources */,
 				7D0CC94D29A20254006EF0D4 /* SettingViewController.swift in Sources */,

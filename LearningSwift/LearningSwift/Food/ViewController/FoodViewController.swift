@@ -103,9 +103,11 @@ extension FoodViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // let foodItem = foodList[indexPath.row]
-        // let foodDetailVC = FoodDetailViewController()
-        // foodDetailVC.foodId = foodItem.id
-        // navigationController?.pushViewController(foodDetailVC, animated: true)
+        let foodTypeItem = foodList[indexPath.section]
+        let foodlist = foodTypeItem.foodlist
+        let foodItem = foodlist[indexPath.row]
+        let foodDetailVc = FoodDetailController()
+        foodDetailVc.foodItem = foodItem
+        navigationController?.pushViewController(foodDetailVc, animated: true)
     }
 }
